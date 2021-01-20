@@ -1,0 +1,70 @@
+﻿@model LaptopApplication.Models.LaptopModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript">
+    function AddtoCart(id, btn) {
+        //debugger;
+
+        var lblcount = document.getElementById("lblCount");
+
+        // this.innerHTML = "Added";
+        if (lblcount.innerHTML == "")
+            lblcount.innerHTML = 1;
+        else
+            lblcount.innerHTML = parseInt(lblcount.innerHTML) + 1;
+    }
+
+</script>
+<div>
+    <h4>LaptopModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2" style="visibility:hidden">
+            @Html.DisplayNameFor(model => model.SNo)
+        </dt>
+        <dd class = "col-sm-10" style="visibility:hidden">
+            @Html.DisplayFor(model => model.SNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Html.DisplayFor(model => model.Image)" width="100px" height="100px" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Specification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Specification)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.color)
+        </dd>
+        <dt class = "col-sm-2">
+            <i class="fa fa-inr"></i> @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            <i class="fa fa-inr"></i> @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    @Html.ActionLink("Add To Cart", "PlaceOrder", "PlaceOrder", new { id = Model.SNo,val="Add" }) |
+    @*<button id="btnAddCart" onclick="javacript:AddtoCart(@Html.DisplayFor(modelItem => item.SNo),this)">Add to Cart</button>*@
+    <a asp-action="Index">Back to Main Menu</a>
+</div>
